@@ -28,8 +28,6 @@ restoreTerminal() {
     puts("\e[?25h");
     if (tcsetattr(STDOUT_FILENO, TCSAFLUSH, &orig_term) < 0)
         err(1, "can't restore terminal state");
-    // clear screen
-    puts("\x1b[2J");
 }
 
 void
@@ -122,7 +120,7 @@ getInput(struct screen_size s) {
         err(1, "can't read line from stdin");
 
     if (text.lines == 0)
-        err(1, "empty input");
+        errx(1, "empty input");
 
     return text;
 }
@@ -160,6 +158,9 @@ main(void) {
     for (size_t i = 0; i < text.lines; i++)
         free(text.data[i]);
     free(text.data);
+
+    // clear screen
+    puts("\x1b[2J");
 
     return 0;
 }

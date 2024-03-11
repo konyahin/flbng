@@ -29,7 +29,9 @@ chars | ./flbng
 Some errors check. Should be:
     flbng: too much lines for this terminal, should be less than X
     flbng: too long line for this terminal, should be shorter than X
+    flbng: empty input
 EOF
 
 echo "0\n$(lines)" | ./flbng
 echo "*$(chars)" | ./flbng
+printf "" | ./flbng
