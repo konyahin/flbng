@@ -1,6 +1,6 @@
 .POSIX:
 .SUFFIXES:
-.PHONY: install uninstall clean
+.PHONY: install uninstall clean run test
 
 BIN       = flbng
 CC        = cc
